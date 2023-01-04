@@ -2,16 +2,32 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import './script/scripts.js'
+import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import { firstName, lastName, address1, address2, contactNumber, email, jobDescription, experience, education } from './data/data.json'
+
 
 function App() {
     // const [count, setCount] = useState(0)
+    const [jobDesc, count] = useTypewriter({
+        words: [`${jobDescription}`],
+        loop: 1,
+        delaySpeed: 1000,
+        typeSpeed: 10
+    })
+
+    // const [lastNameWithAnimation, countLast] = useTypewriter({
+    //     words: [`${lastName}`],
+    //     loop: 1,
+    //     delaySpeed: 2000,
+    // })
 
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-success fixed-top" id="sideNav">
                 <a className="navbar-brand js-scroll-trigger" href="#page-top">
-                    <span className="d-block d-lg-none">{firstName} {lastName}</span>
+                    <span className="d-block d-lg-none">
+
+                        {firstName} {lastName}</span>
                     <span className="d-none d-lg-block"><img className="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://github.com/jorgekean/jkn-profile/blob/main/src/assets/img/profile-jkn.jpg?raw=true" alt="..." /></span>
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
@@ -33,13 +49,14 @@ function App() {
                     <div className="resume-section-content">
                         <h1 className="mb-0">
                             {firstName}
+
                             <span className="text-success">{lastName}</span>
                         </h1>
                         <div className="subheading mb-5">
                             {address1} · {address2} · {contactNumber} ·
                             <a href={`mailto:${email}`} className='text-success'>{email}</a>
                         </div>
-                        <p className="lead mb-5">{jobDescription}</p>
+                        <p className="lead mb-5">{jobDesc}</p>
                         <div className="social-icons">
                             <a className="social-icon" target={"_blank"} href="https://www.linkedin.com/in/jorge-kean-de-los-reyes"><i className="fab fa-linkedin-in"></i></a>
                             <a className="social-icon" target={"_blank"} href="https://github.com/jorgekean"><i className="fab fa-github"></i></a>
